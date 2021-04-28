@@ -2,10 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsThunk } from "../../store/thunk";
 import { Link } from "react-router-dom";
+import { postsReducerSelector } from "../../store/postsReducer";
 
-export const postsReducerSelector = {
-  getData: state => state.postsReducer
-}
 
 export function Posts() {
 

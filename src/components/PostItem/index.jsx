@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { postsReducerSelector } from "../../store/postsReducer";
 
 export function PostItem(props) {
   const { id } = useParams()
-  const posts = useSelector(state => state.postsReducer.posts)
+  const posts = useSelector(postsReducerSelector.getData)
 
 
   return (

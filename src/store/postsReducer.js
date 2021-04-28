@@ -27,3 +27,7 @@ export default createReducer(initialState, {
         state.posts = []
     }
 })
+
+export const postsReducerSelector = {
+    getData: state => state.postsReducer
+  }
