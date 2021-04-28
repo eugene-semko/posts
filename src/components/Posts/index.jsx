@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPostsThunk } from "../../store/thunk";
 import { Link } from "react-router-dom";
 
+export const postsReducerSelector = {
+  getData: state => state.postsReducer
+}
+
 export function Posts() {
 
-  const users = useSelector(state => state.postsReducer.users)
-  const loading = useSelector(state => state.postsReducer.loading)
-  const error = useSelector(state => state.postsReducer.error)
+  const {
+    posts,
+    loading,
+    error
+  } = useSelector(postsReducerSelector.getData)
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,12 +38,11 @@ export function Posts() {
       <div className="row">
         <div className="col-12">
           <ul className="list-group-flush">
-            {users.map((user,index) => {
-              const link = `/posts/${user.id}`
+            {posts.map((post,index) => {
               return (
-                <div>
-                  <Link style={style} to = {{pathname:link}}>
-                    <h6>{user.title}</h6>
+                <div key={index}>
+                  <Link style={style} to = {`/posts/${post.id}`}>
+                    <h6>{post.title}</h6>
                   </Link> 
                   <br></br>
                   <br></br>

@@ -1,15 +1,14 @@
-import axios from 'axios'
-import {fetchUsers, fetchUsersError, fetchUsersSuccess} from './postsReducer'
-
+import {fetchPosts, fetchPostsError, fetchPostsSuccess} from './postsReducer'
+import {API} from '../api/index'
 export const getPostsThunk = () => {
     return async (dispatch) => {
         try {
-            dispatch({type: fetchUsers})
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-            dispatch({type: fetchUsersSuccess, payload: response.data})
+            dispatch({type: fetchPosts})
+            const response = await API.get('/posts')
+            dispatch({type: fetchPostsSuccess, payload: response.data})
         } catch (e) {
             dispatch({
-                type:fetchUsersError,
+                type:fetchPostsError,
                 payload: 'Произошла ошибка'
             })
         }

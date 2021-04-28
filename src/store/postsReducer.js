@@ -1,29 +1,29 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const fetchUsers = createAction('FETCH_USERS')
-export const fetchUsersSuccess = createAction('FETCH_USERS_SUCCESS')
-export const fetchUsersError = createAction('FETCH_USERS_ERROR')
+export const fetchPosts = createAction('FETCH_POSTS')
+export const fetchPostsSuccess = createAction('FETCH_POSTS_SUCCESS')
+export const fetchPostsError = createAction('FETCH_POSTS_ERROR')
 
 const initialState = {
-    users: [],
+    posts: [],
     loading: false,
     error: null
 }
 
 export default createReducer(initialState, {
-    [fetchUsers]: (state) => {
+    [fetchPosts]: (state) => {
         state.loading = true
         state.error = null
-        state.users = []
+        state.posts = []
     },
-    [fetchUsersSuccess]: (state, action) => {
+    [fetchPostsSuccess]: (state, action) => {
         state.loading = false
         state.error = null
-        state.users = action.payload
+        state.posts = action.payload
     },
-    [fetchUsersError]: (state, action) => {
+    [fetchPostsError]: (state, action) => {
         state.loading = false
         state.error = action.payload
-        state.users = []
+        state.posts = []
     }
 })

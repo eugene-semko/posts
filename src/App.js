@@ -16,7 +16,7 @@ export function App() {
         <Route exact path="/" component={Main} />
         <Route exact path={["/posts", "/posts/:id"]} component={Breadcrumb} />
         <Route exact path="/posts" component={Posts} />
-        <Route exact path="/posts/:id" component={PostItem} />Ы
+        <Route exact path="/posts/:id" component={PostItem} />
       </div>
   );
 }
